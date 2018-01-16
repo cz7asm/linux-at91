@@ -83,13 +83,13 @@ config ARCH_AT91SAM9X5
 	select CPU_ARM926T
 	select GENERIC_CLOCKEVENTS
 	select HAVE_FB_ATMEL
-	select HAVE_NET_MACB
 
 config ARCH_AT91SAM9N12
 	bool "AT91SAM9N12"
 	select CPU_ARM926T
 	select GENERIC_CLOCKEVENTS
 	select HAVE_FB_ATMEL
+    
 
 config ARCH_AT91CAP9
 	bool "AT91CAP9"
@@ -443,11 +443,20 @@ if ARCH_AT91SAM9X5
 
 comment "AT91SAM9x5 Series Board Type"
 
+choice
+	prompt "Atmel SAM9x5 Board"
+
 config MACH_AT91SAM9X5EK
 	bool "Atmel AT91SAM9x5 Series Evaluation Kit"
+	select HAVE_NET_MACB
 	help
 	  Select this if you re using Atmel's AT91SAM9x5-EK Evaluation Kit.
 	  Supported chips are sam9g15, sam9g25, sam9x25, sam9g35 and sam9x35.
+
+config MACH_SONIC
+	bool "Honeywell Prestige Thermostat"
+
+endchoice
 
 endif
 

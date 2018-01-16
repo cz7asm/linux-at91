@@ -92,6 +92,9 @@ obj-$(CONFIG_MACH_AT572D940HFEB) += board-at572d940hf_ek.o
 # AT91X40 board-specific support
 obj-$(CONFIG_MACH_AT91EB01)	+= board-eb01.o
 
+# SONIC board-specific support
+obj-$(CONFIG_MACH_SONIC) += board-sonic.o board-sonic_cm.o
+
 # Drivers
 obj-y				+= leds.o
 

@@ -96,6 +96,7 @@ static void atmel_hlcdfb_update_dma_ovl(struct fb_info *info,
 /* some bl->props field just changed */
 static int atmel_bl_update_status(struct backlight_device *bl)
 {
+#ifdef CONFIG__BACKLIGHT_ATMEL_LCDC
 	struct atmel_lcdfb_info *sinfo = bl_get_data(bl);
 	int power = sinfo->bl_power;
 	int brightness = bl->props.brightness;
@@ -121,7 +122,7 @@ static int atmel_bl_update_status(struct backlight_device *bl)
 	lcdc_writel(sinfo, ATMEL_LCDC_LCDCFG6, reg);
 
 	bl->props.fb_blank = bl->props.power = sinfo->bl_power = power;
-
+#endif
 	return 0;
 }
 
